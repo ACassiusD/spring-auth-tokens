@@ -1,4 +1,4 @@
-package com.assetproject.assetproject.services;
+package com.assetproject.assetproject.services.response;
 
 public class AuthenticationResponse {
     private final String jwt;

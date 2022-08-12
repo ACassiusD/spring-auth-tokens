@@ -1,13 +1,14 @@
 package com.assetproject.assetproject.resources;
 
-import com.assetproject.assetproject.mapper.AssetMapper;
-import com.assetproject.assetproject.services.Asset;
-import com.assetproject.assetproject.services.AssetService;
-import com.assetproject.assetproject.services.AuthenticationRequest;
-import com.assetproject.assetproject.services.AuthenticationResponse;
+import com.assetproject.assetproject.services.*;
+import com.assetproject.assetproject.services.request.AuthenticationRequest;
+import com.assetproject.assetproject.services.request.CreateRequest;
+import com.assetproject.assetproject.services.response.AuthenticationResponse;
+import com.assetproject.assetproject.services.response.CreateResponse;
 import com.assetproject.assetproject.util.JwtUtil;
 import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -48,6 +49,21 @@ public class AssetController {
     @GetMapping("/getAssets")
     public List<Asset> getAllAssets(@RequestParam(value="name", defaultValue="World") String name) {
         return assetService.getAll();
+    }
+
+    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    public ResponseEntity<?>  create(@RequestBody CreateRequest createRequest) throws Exception{
+        //Super basic and bad error handling
+        if( (createRequest.getAssetTypeId() != 1  && createRequest.getAssetTypeId() != 2) || createRequest.getName() == null || createRequest.getDescription() == null || createRequest.getPrice() == 0){
+            return ResponseEntity.ok(new CreateResponse("Error", "All fields must be provided and valid"));
+        }
+        try {
+            assetService.create(createRequest);
+            return ResponseEntity.ok(new CreateResponse("Success", null));
+        }
+        catch (Exception e){
+            return ResponseEntity.ok(new CreateResponse("Error", e.getMessage()));
+        }
     }
 
     //@RequestBody parses the username and password from the request body

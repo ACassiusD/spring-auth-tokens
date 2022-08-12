@@ -39,8 +39,8 @@ public class JwtUtil {
         return claimsResolver.apply(claims);
     }
     private Claims extractAllClaims(String token){
+        //Token verification happens here. If we set signing key to something different than the secret key, then it fails.
         return Jwts.parser().setSigningKey(SECRET_KEY).parseClaimsJws(token).getBody();
-
     }
     public String createToken(Map<String, Object> claims, String subject){
         return Jwts.builder().setClaims(claims).setSubject(subject).setIssuedAt(new Date(System.currentTimeMillis()))

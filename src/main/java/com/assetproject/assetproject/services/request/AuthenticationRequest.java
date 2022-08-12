@@ -1,6 +1,6 @@
-package com.assetproject.assetproject.services;
+package com.assetproject.assetproject.services.request;
 
-// Input argument to authenticate method
+// Input argument to authenticate controller
 // Class is structure for what user will send in the post request.
 // Contains getters, setters and constructors.
 public class AuthenticationRequest {

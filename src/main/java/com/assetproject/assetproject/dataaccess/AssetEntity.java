@@ -1,8 +1,6 @@
 package com.assetproject.assetproject.dataaccess;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OrderColumn;
+import javax.persistence.*;
 import java.util.Date;
 
 //May need to rename table to asset entity to work
@@ -14,7 +12,8 @@ public class AssetEntity {
     //Table column representation
     //Apparently you cannot tell spring what order to create these columns in the DB table
     // ... lol  https://stackoverflow.com/questions/1298322/wrong-ordering-in-generated-table-in-jpa
-    @Id // Setting the primary key to ID
+    @Id  // Setting the primary key to ID Auto generate the id by autoincrementing
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String name;
     private String description;
@@ -22,7 +21,6 @@ public class AssetEntity {
     private Date date;
     private int assetTypeId;
     @OrderColumn
-
 
     //Getters
     public Integer getId() {
