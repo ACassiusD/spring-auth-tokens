@@ -4,6 +4,7 @@ import com.assetproject.assetproject.dataaccess.AssetEntity;
 import com.assetproject.assetproject.dataaccess.AssetRepository;
 import com.assetproject.assetproject.mapper.AssetMapper;
 import com.assetproject.assetproject.services.request.CreateRequest;
+import com.assetproject.assetproject.services.request.UpdateRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -41,7 +42,17 @@ public class AssetService {
         assetRepository.save(assetEntity);
     }
 
-    //updateById()
+    public void update(UpdateRequest updateRequest){
+        AssetEntity test = assetRepository.findById(1).orElse(null);
+        test.setName(updateRequest.getName());
+        test.setDescription(updateRequest.getDescription());
+        test.setDate(updateRequest.getDate());
+        test.setPrice(updateRequest.getPrice());
+        test.setAssetTypeId(updateRequest.getAssetTypeId());
+        assetRepository.save(test);
+    }
 
-    //deleteById()
+    public void delete(int id){
+        assetRepository.deleteById(id);
+    }
 }
