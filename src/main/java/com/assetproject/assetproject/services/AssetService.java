@@ -43,7 +43,7 @@ public class AssetService {
     }
 
     public void update(UpdateRequest updateRequest){
-        AssetEntity test = assetRepository.findById(1).orElse(null);
+        AssetEntity test = assetRepository.findById(updateRequest.getId()).orElse(null);
         test.setName(updateRequest.getName());
         test.setDescription(updateRequest.getDescription());
         test.setDate(updateRequest.getDate());

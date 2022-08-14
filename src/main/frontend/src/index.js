@@ -12,6 +12,7 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
+        {/* React router setup. */}
         <Route index element={<App />} />  {/* LOGIN PAGE */}
         <Route path="assets" element={<Assets />} />  {/* ASSETS PAGE */}
         <Route path="dashboard" element={<Dashboard />} />
@@ -20,7 +21,4 @@ root.render(
   </React.StrictMode>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();

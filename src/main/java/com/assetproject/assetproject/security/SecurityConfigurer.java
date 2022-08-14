@@ -43,20 +43,13 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception{
-        http.cors().disable().csrf().disable()
-                .authorizeRequests().antMatchers("/authenticate", "/").permitAll()
+        http.csrf().disable()
+                .authorizeRequests().antMatchers( "/**").permitAll()
                 .anyRequest().authenticated()
                 //Stateless, don't manage session, make it stateless.
                 .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         //Add our filter to the request
         http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
-
-
-
-        //
-//        http.cors().disable().antMatcher("/getAssets");
-//        http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
-
     }
 }
 
