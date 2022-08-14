@@ -1,8 +1,17 @@
 # spring-auth-tokens
 A spring project with a basic CRUD endpoints for managing a asset table. Includes JWT token authorization. Leverages Spring security package. Spring backend running on port localhost:8090
 
+
+#### LOGIN CREDENTIALS ####
+
+Username = assetadmin
+
+Password = assetpass
+
+
 #### DOWNLOAD POSTMAN ENVIROMENT HERE ####
-[Asset application.postman_collection.zip](https://github.com/ACassiusD/spring-auth-tokens/files/9332452/Asset.application.postman_collection.zip)
+[Asset application.postman_collection.zip](https://github.com/ACassiusD/spring-auth-tokens/files/9332475/Asset.application.postman_collection.zip)
+
 
 #### HOW TO RUN REACT FRONTEND ####
 
