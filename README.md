@@ -21,6 +21,6 @@ Password = assetpass
   
   -http://localhost:3000/ should be default to login page.
   
-  -http://localhost:3000/assets is restricted to only those with a auth token.
+  -http://localhost:3000/assets is restricted to only those with a auth token. Will redirect to login page if authentication fails.
   
   -CRUD calls within /assets will fails and return an authentication error message if auth token is not valid.
